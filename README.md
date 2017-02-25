@@ -27,3 +27,7 @@ mvn exec:java
 ```
 
 For more details see https://github.com/wey-yu/poks-service/blob/master/src/main/golo/main.golo 
+
+## Dependencies
+
+https://github.com/wey-yu/poks-core-libs
