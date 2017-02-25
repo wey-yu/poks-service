@@ -31,7 +31,7 @@
     <dependency>
 	    <groupId>com.github.wey-yu</groupId>
 	    <artifactId>poks-core-libs</artifactId>
-	    <version>1.0.1-alpha</version>
+	    <version>1.0.3-alpha</version>
     </dependency>
   </dependencies>
 
