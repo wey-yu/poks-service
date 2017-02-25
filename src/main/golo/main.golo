@@ -43,7 +43,7 @@ function main = |args| {
         ["usage", serviceBaseUrl+"/"+serviceName+"/product/:a/:b"],
         ["method", "GET"],
         ["args", map[["a","double"], ["b","double"]]],
-        ["result", map[["r", "double"]]],
+        ["result", map[["result", "double"]]],
         ["description", "a great product service"]
       ],
       map[
