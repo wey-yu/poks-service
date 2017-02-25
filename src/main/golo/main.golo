@@ -63,6 +63,15 @@ function main = |args| {
         ["args", map[["a","double"], ["b","double"]]],
         ["result", map[["result", "double"]]],
         ["description", "a great addition service"]
+      ],
+      map[
+        ["name", "concat"],
+        ["url", serviceBaseUrl+"/"+serviceName+"/concat"],
+        ["usage", serviceBaseUrl+"/"+serviceName+"/concat"],
+        ["method", "POST"],
+        ["args", map[["a","string"], ["b","string"]]],
+        ["result", map[["result", "string"]]],
+        ["description", "a great string concatenation service"]
       ]
     ]]
   ]
@@ -81,6 +90,26 @@ function main = |args| {
 
   # service
   setPort(port)
+
+  # string concatenation
+  post(serviceName+"/concat", |request, response| -> trying({
+
+    let data = JSON.parse(request: body())
+
+    let a = data: get("a")
+    let b = data: get("b")
+
+    return DynamicObject()
+      : a(a)
+      : b(b)
+      : result(a: toString() + b: toString())
+  })
+  : either(
+    |content| -> response: jsonPayLoad(content),
+    |error| -> response: jsonPayLoad(DynamicObject(): message(error: message()))
+  ))
+
+
 
   # http://localhost:9090/calculator/product/9/789
   get(serviceName+"/product/:a/:b", |request, response| -> trying({
